@@ -18,9 +18,6 @@ class FlightRepository(
     suspend fun getAllAirports(): List<AirportEntity> =
         airportDao.getAllAirports()
 
-    suspend fun getAirportByCode(code: String): AirportEntity? =
-        airportDao.getAirportByCode(code)
-
     suspend fun getFavorites(): List<FavoriteEntity> =
         favoriteDao.getFavorites()
 

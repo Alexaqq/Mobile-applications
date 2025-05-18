@@ -26,10 +26,14 @@ class FlightViewModel(private val repo: FlightRepository) : ViewModel() {
     val favorites: StateFlow<List<FavoriteEntity>> = _favorites.asStateFlow()
 
     init {
-        // Восстановление поиска из DataStore
         viewModelScope.launch {
             repo.searchTextFlow.collect { text ->
-                text?.let { _searchText.value = it }
+                text?.let {
+                    _searchText.value = it
+                    if (it.isNotBlank()) {
+                        _airports.value = repo.searchAirports(it)
+                    }
+                }
                 loadFavorites()
             }
         }

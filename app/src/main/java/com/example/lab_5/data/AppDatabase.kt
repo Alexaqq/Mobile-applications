@@ -20,7 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "flight_search.db"
                 )
-                    .createFromAsset("flight_search.db") // Используем prepopulated DB
+                    .createFromAsset("flight_search.db")
                     .build()
                 INSTANCE = instance
                 instance
